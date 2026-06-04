@@ -1,18 +1,56 @@
-#Yourheading {
-    color : blue;
-}
-#Myheading {
-    color: Green;
+/* h1{
+    text-align: center;
+    text-transform: capitalize;
 
 }
-.myclass{
-    color :#ff0000;
-
+p{
+    font-family : Times New Roman ;
 }
-#Div {
-    color : blue;
+#outer {
+    font: size 25px; 
 }
-.Heading{
+#inner {
+    font: size 10px ;
+}
+#green {
+    height: 100px;
+    width: 100px;
+    background : rgb(5, 185, 5);
+    border: 2px;
+    border-radius :50px;   
+}
+#red {
+    height: 100px;
+    width: 100px;
+    background : rgb(230, 8, 8);
+    border: 2px;
+    border-radius :50px; 
+}
+#yellow {
+    height: 100px;
+    width: 100px;
+    background : rgb(253, 216, 7);
+    border: 2px;
+    border-radius :50px; 
+}
+#masterdiv {
+    border : 100px brown 30px 
 
-    color : #ff0000;
+} */
+* {
+    padding : 0px;
+    margin : 0px;
+    color : white;
+}
+#Navbar {
+    height : 60px;
+    background-color: #0f1111;
+} 
+#logo {
+    color : #f08804;
+    font-size: 25px;
+}
+button {
+    background-color :#f08804;
+
 }
