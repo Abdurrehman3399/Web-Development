@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSHNI PUBLIC SCHOOL  Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary: #1e40af;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.85)), 
+                             url('https://picsum.photos/id/1015/1920/1080');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #60a5fa;
+            transform: translateY(-2px);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #1e40af, #60a5fa);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="tail-container bg-gray-50 text-gray-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-inner">
+                        R
+                    </div>
+                    <div>
+                        <span class="font-bold text-2xl tracking-tight text-gray-900">ROSHNI</span>
+                        <span class="font-semibold text-blue-700">PUBLIC SCHOOL</span>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" onclick="smoothScrollTo('home')" class="nav-link text-gray-600 hover:text-blue-700">Home</a>
+                    <a href="#about" onclick="smoothScrollTo('about')" class="nav-link text-gray-600 hover:text-blue-700">About</a>
+                    <a href="#admissions" onclick="smoothScrollTo('admissions')" class="nav-link text-gray-600 hover:text-blue-700">Admissions</a>
+                    <a href="#students" onclick="smoothScrollTo('students')" class="nav-link text-gray-600 hover:text-blue-700">Students</a>
+                    <a href="#teachers" onclick="smoothScrollTo('teachers')" class="nav-link text-gray-600 hover:text-blue-700">Teachers</a>
+                    <a href="#courses" onclick="smoothScrollTo('courses')" class="nav-link text-gray-600 hover:text-blue-700">Courses</a>
+                    <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link text-gray-600 hover:text-blue-700">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <button onclick="toggleDashboard()" 
+                            class="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold rounded-2xl flex items-center gap-x-2 transition-colors">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button onclick="showLoginModal()"
+                            class="px-5 py-2 border border-gray-300 hover:border-gray-400 rounded-2xl text-sm font-medium transition-colors">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg h-screen flex items-center text-white relative">
+        <div class="max-w-7xl mx-auto px-6 text-center z-10">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-6xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter">
+                    Welcome to Roshni Public School
+                </h1>
+                <p class="text-2xl md:text-3xl mb-10 text-blue-100 font-light">
+                    Nurturing Excellence Since 1998
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="smoothScrollTo('dashboard')" 
+                            class="px-10 py-4 bg-white text-blue-700 hover:bg-blue-50 font-semibold text-lg rounded-3xl shadow-xl flex items-center justify-center gap-x-3 transition-all active:scale-95">
+                        <i class="fa-solid fa-rocket"></i>
+                        Enter Dashboard
+                    </button>
+                    <button onclick="smoothScrollTo('admissions')" 
+                            class="px-10 py-4 border-2 border-white hover:bg-white/10 font-semibold text-lg rounded-3xl transition-all">
+                        Admissions Open 2026-27
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center text-white/70">
+            <div class="text-xs tracking-widest mb-2">SCROLL TO EXPLORE</div>
+            <i class="fa-solid fa-chevron-down animate-bounce text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- QUICK STATS -->
+    <div class="max-w-7xl mx-auto px-6 -mt-12 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="stats-grid">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="uppercase text-blue-600 text-sm font-semibold tracking-widest">Management Portal</span>
+                <h2 class="text-4xl font-semibold text-gray-900 section-header">School Overview</h2>
+            </div>
+            <div class="text-sm text-gray-500">
+                Academic Year 2025-26 • <span class="font-medium text-emerald-600">Term 2 Ongoing</span>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="bg-white rounded-3xl p-8 shadow card-hover border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm">Total Students</p>
+                        <p class="text-5xl font-semibold mt-2 text-gray-900" id="total-students">1248</p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl">
+                        👨‍🎓
+                    </div>
+                </div>
+                <div class="mt-8 flex items-center text-emerald-500 text-sm font-medium">
+                    <i class="fa-solid fa-arrow-trend-up mr-1"></i>
+                    +42 this month
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow card-hover border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm">Total Teachers</p>
+                        <p class="text-5xl font-semibold mt-2 text-gray-900" id="total-teachers">87</p>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl">
+                        👩‍🏫
+                    </div>
+                </div>
+                <div class="mt-8 flex items-center text-emerald-500 text-sm font-medium">
+                    <i class="fa-solid fa-arrow-trend-up mr-1"></i>
+                    3 new joined
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow card-hover border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm">Active Courses</p>
+                        <p class="text-5xl font-semibold mt-2 text-gray-900" id="total-courses">64</p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                        📚
+                    </div>
+                </div>
+                <div class="mt-8 flex items-center text-rose-500 text-sm font-medium">
+                    <i class="fa-solid fa-arrow-trend-down mr-1"></i>
+                    2 completed
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow card-hover border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-500 text-sm">Fees Collected</p>
+                        <p class="text-5xl font-semibold mt-2 text-gray-900">92%</p>
+                    </div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl">
+                        💰
+                    </div>
+                </div>
+                <div class="mt-6 h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-2 w-[92%] bg-emerald-500 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Student Table -->
+            <div class="lg:col-span-2 bg-white rounded-3xl shadow overflow-hidden">
+                <div class="px-8 pt-8 pb-4 flex items-center justify-between border-b">
+                    <h3 class="font-semibold text-xl">Recent Students</h3>
+                    <button onclick="showAddStudentModal()" 
+                            class="flex items-center gap-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-2xl text-sm font-medium transition-colors">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add Student</span>
+                    </button>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full" id="students-table">
+                        <thead>
+                            <tr class="border-b bg-gray-50">
+                                <th class="text-left py-5 px-8 font-medium text-gray-500">Name</th>
+                                <th class="text-left py-5 px-8 font-medium text-gray-500">Class</th>
+                                <th class="text-left py-5 px-8 font-medium text-gray-500">Roll No</th>
+                                <th class="text-left py-5 px-8 font-medium text-gray-500">Avg Marks</th>
+                                <th class="w-20"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y" id="students-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Teachers Sidebar -->
+            <div class="bg-white rounded-3xl shadow p-8">
+                <h3 class="font-semibold text-xl mb-6">Featured Teachers</h3>
+                <div class="space-y-6" id="teachers-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="bg-gray-100 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="uppercase text-blue-600 text-sm font-semibold tracking-widest">Curriculum</span>
+                <h2 class="text-4xl font-semibold mt-3">Our Academic Programs</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="courses-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-x-3 text-white mb-6">
+                        <div class="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center text-3xl font-bold">R</div>
+                        <div class="text-2xl font-bold tracking-tighter">ROSHNI PUBLIC SCHOOL</div>
+                    </div>
+                    <p class="max-w-xs text-gray-400">
+                        Empowering young minds with quality education, values and innovation since 1998.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-5">Quick Links</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#" class="block hover:text-white transition-colors">Admissions</a>
+                        <a href="#" class="block hover:text-white transition-colors">Academics</a>
+                        <a href="#" class="block hover:text-white transition-colors">Campus Life</a>
+                        <a href="#" class="block hover:text-white transition-colors">Achievements</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-5">Contact</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex gap-x-3">
+                            <i class="fa-solid fa-location-dot mt-0.5"></i>
+                            <div>Sector 15, Rohini, Delhi - 110085</div>
+                        </div>
+                        <div class="flex gap-x-3">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>+91 11 4567 8901</div>
+                        </div>
+                        <div class="flex gap-x-3">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>info@roshnipublic.edu.in</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-5">Follow Us</h4>
+                    <div class="flex gap-x-5 text-2xl">
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-16 pt-8 text-xs flex flex-col md:flex-row justify-between items-center gap-y-4">
+                <div>© 2026 Roshni Public School. All Rights Reserved.</div>
+                <div class="flex gap-x-6 text-xs">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ADD STUDENT MODAL -->
+    <div id="add-student-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-white rounded-3xl max-w-md w-full mx-4 overflow-hidden">
+            <div class="px-8 pt-8 pb-6 border-b">
+                <h3 class="text-2xl font-semibold">Add New Student</h3>
+            </div>
+            
+            <div class="p-8 space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Full Name</label>
+                    <input id="modal-name" type="text" class="w-full border border-gray-300 focus:border-blue-500 rounded-2xl px-5 py-3 outline-none" placeholder="Aarav Sharma">
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Class</label>
+                        <select id="modal-class" class="w-full border border-gray-300 focus:border-blue-500 rounded-2xl px-5 py-3 outline-none">
+                            <option>VI</option>
+                            <option>VII</option>
+                            <option>VIII</option>
+                            <option>IX</option>
+                            <option>X</option>
+                            <option>XI</option>
+                            <option>XII</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Roll No</label>
+                        <input id="modal-roll" type="text" class="w-full border border-gray-300 focus:border-blue-500 rounded-2xl px-5 py-3 outline-none" placeholder="42">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex border-t">
+                <button onclick="hideAddStudentModal()" 
+                        class="flex-1 py-5 text-gray-500 font-medium hover:bg-gray-100 transition-colors">Cancel</button>
+                <button onclick="addNewStudent()" 
+                        class="flex-1 py-5 bg-blue-700 text-white font-semibold hover:bg-blue-800 transition-colors">Add Student</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-white rounded-3xl w-full max-w-sm mx-4 p-8">
+            <div class="text-center mb-8">
+                <div class="mx-auto w-16 h-16 bg-blue-700 rounded-3xl flex items-center justify-center text-white text-4xl mb-4">R</div>
+                <h3 class="text-2xl font-semibold">Staff Portal</h3>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <input type="text" placeholder="Email or Staff ID" class="w-full border border-gray-300 rounded-2xl px-5 py-4">
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" class="w-full border border-gray-300 rounded-2xl px-5 py-4">
+                </div>
+                
+                <button onclick="fakeLogin()" 
+                        class="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-3xl">Sign In</button>
+            </div>
+            
+            <div onclick="hideLoginModal()" class="text-center text-sm mt-6 text-gray-500 cursor-pointer hover:text-gray-700">Close</div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already included
+
+        function smoothScrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Sample data
+        const students = [
+            { name: "Aarav Sharma", class: "X", roll: "24", marks: "94" },
+            { name: "Ananya Gupta", class: "IX", roll: "07", marks: "89" },
+            { name: "Vihaan Patel", class: "XI", roll: "51", marks: "91" },
+            { name: "Saanvi Reddy", class: "VIII", roll: "33", marks: "87" },
+        ];
+
+        const teachers = [
+            { name: "Ali", subject: "Mathematics", avatar: "🧑‍🏫" },
+            { name:"Asad Khan", subject: "Physics", avatar: "🧑‍🔬" },
+            { name: "Ahad Khan zada", subject: "English", avatar: "👩‍🏫" },
+        ];
+
+        const coursesData = [
+            {
+                name: "Advanced Mathematics",
+                teacher: "Ali",
+                icon: "📐",
+                students: 42
+            },
+            {
+                name: "Modern Physics",
+                teacher: "Asad khan",
+                icon: "⚛️",
+                students: 38
+            },
+            {
+                name: "Literature & Composition",
+                teacher: "Ahad khan zada",
+                icon: "📖",
+                students: 51
+            },
+            {
+                name: "Computer Science",
+                teacher: "Abdu_BrandeD",
+                icon: "💻",
+                students: 29
+            }
+        ];
+
+        // Render stats
+        function renderStats() {
+            const container = document.getElementById('stats-grid');
+            container.innerHTML = `
+                <div class="bg-white rounded-3xl p-6 shadow card-hover">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Students</p>
+                            <p class="text-4xl font-bold mt-3">1,248</p>
+                        </div>
+                        <div class="text-5xl opacity-80">👨‍🎓</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-6 shadow card-hover">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Teachers</p>
+                            <p class="text-4xl font-bold mt-3">87</p>
+                        </div>
+                        <div class="text-5xl opacity-80">👩‍🏫</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-6 shadow card-hover">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Courses</p>
+                            <p class="text-4xl font-bold mt-3">64</p>
+                        </div>
+                        <div class="text-5xl opacity-80">📘</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-6 shadow card-hover">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Attendance</p>
+                            <p class="text-4xl font-bold mt-3 text-emerald-600">96%</p>
+                        </div>
+                        <div class="text-5xl opacity-80">📅</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render students table
+        function renderStudentsTable() {
+            const tbody = document.getElementById('students-tbody');
+            tbody.innerHTML = '';
+            
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-blue-50 transition-colors';
+                row.innerHTML = `
+                    <td class="px-8 py-6 font-medium">${student.name}</td>
+                    <td class="px-8 py-6 text-gray-500">${student.class}</td>
+                    <td class="px-8 py-6 text-gray-500">${student.roll}</td>
+                    <td class="px-8 py-6">
+                        <span class="inline-flex items-center px-3 py-1 bg-emerald-100 text-emerald-700 rounded-2xl text-sm font-medium">${student.marks}%</span>
+                    </td>
+                    <td class="px-8 py-6 text-right">
+                        <button class="text-blue-600 hover:text-blue-700">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Render teachers
+        function renderTeachers() {
+            const container = document.getElementById('teachers-list');
+            container.innerHTML = '';
+            
+            teachers.forEach(teacher => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-x-4';
+                div.innerHTML = `
+                    <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 text-white text-3xl flex items-center justify-center rounded-2xl shadow-inner">${teacher.avatar}</div>
+                    <div class="flex-1">
+                        <div class="font-medium">${teacher.name}</div>
+                        <div class="text-sm text-gray-500">${teacher.subject}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render courses
+        function renderCourses() {
+            const container = document.getElementById('courses-grid');
+            container.innerHTML = '';
+            
+            coursesData.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl p-8 card-hover shadow';
+                card.innerHTML = `
+                    <div class="text-6xl mb-8">${course.icon}</div>
+                    <h4 class="font-semibold text-2xl mb-2">${course.name}</h4>
+                    <p class="text-gray-500 mb-6">${course.teacher}</p>
+                    <div class="flex justify-between items-center text-sm">
+                        <div class="flex items-center gap-x-2">
+                            <span class="text-emerald-600">•</span>
+                            <span class="font-medium">${course.students} students</span>
+                        </div>
+                        <button class="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-x-1">
+                            View <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showAddStudentModal() {
+            document.getElementById('add-student-modal').classList.remove('hidden');
+            document.getElementById('add-student-modal').classList.add('flex');
+        }
+
+        function hideAddStudentModal() {
+            const modal = document.getElementById('add-student-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function addNewStudent() {
+            const name = document.getElementById('modal-name').value || "New Student";
+            const cls = document.getElementById('modal-class').value;
+            const roll = document.getElementById('modal-roll').value || Math.floor(Math.random()*100);
+            
+            students.unshift({
+                name: name,
+                class: cls,
+                roll: roll,
+                marks: Math.floor(75 + Math.random() * 20)
+            });
+            
+            renderStudentsTable();
+            hideAddStudentModal();
+            
+            // Toast
+            const toast = document.createElement('div');
+            toast.style.position = 'fixed';
+            toast.style.bottom = '24px';
+            toast.style.right = '24px';
+            toast.style.backgroundColor = '#166534';
+            toast.style.color = 'white';
+            toast.style.padding = '16px 24px';
+            toast.style.borderRadius = '9999px';
+            toast.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
+            toast.innerHTML = '✅ Student added successfully!';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function showLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+            document.getElementById('login-modal').classList.add('flex');
+        }
+
+        function hideLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function fakeLogin() {
+            hideLoginModal();
+            const toast = document.createElement('div');
+            toast.style.position = 'fixed';
+            toast.style.top = '24px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = '#1e40af';
+            toast.style.color = 'white';
+            toast.style.padding = '14px 32px';
+            toast.style.borderRadius = '9999px';
+            toast.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
+            toast.innerHTML = '🎉 Welcome back, Principal Sharma!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2800);
+        }
+
+        function toggleDashboard() {
+            smoothScrollTo('dashboard');
+        }
+
+        // Initialize everything
+        window.onload = function() {
+            renderStats();
+            renderStudentsTable();
+            renderTeachers();
+            renderCourses();
+            
+            // Keyboard support for modals
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const studentModal = document.getElementById('add-student-modal');
+                    const loginModal = document.getElementById('login-modal');
+                    if (!studentModal.classList.contains('hidden')) hideAddStudentModal();
+                    else if (!loginModal.classList.contains('hidden')) hideLoginModal();
+                }
+            });
+            
+            console.log('%c✅ Roshni Public School Management UI loaded successfully!', 'color: #1e40af; font-family: monospace; font-size: 13px');
+        };
+    </script>
+</body>
+</html>
